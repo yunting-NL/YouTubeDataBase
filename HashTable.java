@@ -58,13 +58,13 @@ public class HashTable<T extends Comparable<T>> {
 	 * @return the index in the Table (0 to Table.length - 1) or -1 if t is not in
 	 *         the Table
 	 */
-	public int search(T t) {
+	public boolean search(T t) {
 		for (int i = 0; i < Video.size(); i++) {
 			if (Video.get(i).linearSearch(t) != -1) {
-				return i;
+				return true;
 			}
 		}
-		return -1;
+		return false;
 	}
 
 	/** Manipulation Procedures */
@@ -90,7 +90,7 @@ public class HashTable<T extends Comparable<T>> {
 	 * @throws NoSuchElementException when the element is not in the table
 	 */
 	public void remove(T t) throws NoSuchElementException {
-		if (search(t) == -1) {
+		if (search(t) == false) {
 			throw new NoSuchElementException("remove: Cannot remove when the element is not in the table");
 		}
 		int index = hash(t);
